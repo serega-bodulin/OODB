@@ -9,9 +9,9 @@ public class Owner {
     private String adress;
     private String contribution;
     private String number_reg;
-    private Date date_reg;
+    private String date_reg;
 
-    public Owner(Integer id, String name, String phone, String adress, String contribution, String number_reg, Date date_reg) {
+    public Owner(Integer id, String name, String phone, String adress, String contribution, String number_reg, String date_reg) {
         //TODO коснтруктор владелец
         this.id = id;
         this.name = name;
@@ -70,11 +70,11 @@ public class Owner {
         this.number_reg = number_reg;
     }
 
-    public Date getDate_reg() {
+    public String getDate_reg() {
         return date_reg;
     }
 
-    public void setDate_reg(Date date_reg) {
+    public void setDate_reg(String date_reg) {
         this.date_reg = date_reg;
     }
 }

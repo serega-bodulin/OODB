@@ -17,15 +17,62 @@ public class Main{
         ObjectContainer db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "DataBase_Shop");
 
         try{
-            //Заполнение
-
-            addShop(db,01, "Five", "40 let pobedi 5-21",
-                    "8999955", 10000,
+            //МАГАЗИНЫ
+            addShop(db,01, "Пятерочка", "Школьная ",
+                    "123", 10000,
                     "Продуктовый");
+            addShop(db,02, "SunRise", "Студенческая",
+                    "1234", 15000,
+                    "Ювелирный");
+            addShop(db,03, "Хозтовары", "30 лет победы",
+                    "12345", 12000,
+                    "Хозяйственный");
+            addShop(db,04, "Куртки", "40 лет победы",
+                    "123456", 10000,
+                    "Кожгалантерея");
+            addShop(db,05, "Adidas", "50 ВЛКСМ",
+                    "1234567", 13000,
+                    "Одежда");
+            addShop(db,05, "Nike", "Ленина",
+                    "12345678", 12000,
+                    "Одежда");
+            //ВЛАДЕЛЬЦЫ
+            addOwner(db,1,"Петров Иван Иванович","+7(950)123-45-67",
+                    "10 лет победы", "150000",
+                    "1", "01/05/2017");
+            addOwner(db,2,"Петрова Людмила Алексеевна","+7(912)123-45-67",
+                    "20 лет победы", "75000",
+                    "2", "22/02/2013");
+            addOwner(db,3,"Сергеев Сергей Сергеевич","+7(963)123-45-67",
+                    "30 лет победы", "500000",
+                    "3", "12/04/2011");
+            addOwner(db,4,"Иванов Иван Иванович","+7(951)123-45-67",
+                    "Школьная", "20000",
+                    "4", "13/07/2017");
+            addOwner(db,5,"Сидорова Анна Ивановна","+7(952)123-45-67",
+                    "Песочная", "15000",
+                    "5", "22/06/2014");
+            addOwner(db,6,"Максимов Максим Антонович","+7(950)000-05-07",
+                    "Молодежная", "8000",
+                    "6", "01/11/2017");
+            addOwner(db,7,"Антонов Антон Иванович","+7(982)222-33-44",
+                    "Советская", "60000",
+                    "7", "12/04/2016");
+            addOwner(db,8,"Михайлов Михаил Михайлович","+7(963)111-22-44",
+                    "Удмуртская", "25000",
+                    "8", "14/02/2012");
+            addOwner(db,9,"Бобров Борис Борисович","+7(912)000-22-44",
+                    "Удмуртская", "25000",
+                    "9", "14/02/2012");
+            addProvider(db,1,"Сидоров Андрей Вячеславович","Курортная",
+                    "+7(950)125-25-25",700000.0);
+            addProvider(db,2,"Белоусов Юрий Васильевич","Воткинское шоссе",
+                    "+7(911)111-11-11",100000.0);
+            addProvider(db,3,"Григорьев Владимир Артемович","Спортивная",
+                    "+7(922)222-22-22",40000.0);
             //clearDb(db);
             ObjectSet<?> result = db.query(Shop.class);
             listResult(result);
-
         } finally {
             db.close();
         }
@@ -44,7 +91,7 @@ public class Main{
         while (result.hasNext()) db.delete(result.hasNext());
     }
 
-    public static void addOwner(ObjectContainer db, Integer id, String name, String phone, String adress, String contribution, String number_reg, Date date_reg) {
+    public static void addOwner(ObjectContainer db, Integer id, String name, String phone, String adress, String contribution, String number_reg, String date_reg) {
         ObjectSet oldOwner = findOwner(db, name);
 
         if(oldOwner.size() == 0){
@@ -109,6 +156,5 @@ public class Main{
         });
         return shop;
     }
-
-
+    //поиск самого дорогого поставщика
 }
